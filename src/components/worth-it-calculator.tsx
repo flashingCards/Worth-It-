@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { add, format } from 'date-fns';
-import { Settings, Wallet, ShoppingCart, Calendar as CalendarIcon, Sparkles, SlidersHorizontal } from 'lucide-react';
+import { Settings, Wallet, ShoppingCart, Calendar as CalendarIcon, Sparkles } from 'lucide-react';
 
 import useLocalStorage from '@/hooks/use-local-storage';
 import { cn } from '@/lib/utils';
@@ -20,6 +20,7 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTr
 import { Slider } from '@/components/ui/slider';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const formSchema = z.object({
   salary: z.coerce.number().positive({ message: "Salary must be a positive number." }).min(1, "Salary is required."),
@@ -74,7 +75,7 @@ export default function WorthItCalculator() {
     <Card className="w-full max-w-lg shadow-2xl">
       <CardHeader className="text-center">
         <div className="mx-auto bg-primary/20 rounded-full p-3 w-fit mb-2">
-            <Sparkles className="w-8 h-8 text-primary-foreground" />
+            <Sparkles className="w-8 h-8 text-primary" />
         </div>
         <CardTitle className="text-3xl font-bold">Worth It?</CardTitle>
         <CardDescription className="text-lg">Find out how long you need to work for that new gadget.</CardDescription>
@@ -186,7 +187,8 @@ export default function WorthItCalculator() {
           </div>
         </CardFooter>
       )}
-       <div className="absolute top-4 right-4">
+       <div className="absolute top-4 right-4 flex items-center gap-2">
+          <ThemeToggle />
           <Sheet open={isSettingsOpen} onOpenChange={setIsSettingsOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -205,7 +207,7 @@ export default function WorthItCalculator() {
                  <div className="space-y-4">
                     <div className="flex justify-between items-center">
                        <Label htmlFor="work-days">Work Days per Week</Label>
-                       <span className="font-bold text-lg text-primary-foreground">{workDaysPerWeek}</span>
+                       <span className="font-bold text-lg text-primary">{workDaysPerWeek}</span>
                     </div>
                     <Slider
                       id="work-days"
@@ -219,7 +221,7 @@ export default function WorthItCalculator() {
                  <div className="space-y-4">
                     <div className="flex justify-between items-center">
                        <Label htmlFor="work-hours">Work Hours per Day</Label>
-                       <span className="font-bold text-lg text-primary-foreground">{workHoursPerDay}</span>
+                       <span className="font-bold text-lg text-primary">{workHoursPerDay}</span>
                     </div>
                     <Slider
                       id="work-hours"
