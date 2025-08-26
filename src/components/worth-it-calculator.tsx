@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -41,6 +41,11 @@ export default function WorthItCalculator() {
   const [workHoursPerDay, setWorkHoursPerDay] = useLocalStorage<number>("workHoursPerDay", 8);
   const [result, setResult] = useState<Result | null>(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -69,6 +74,10 @@ export default function WorthItCalculator() {
     }
     
     setResult({ days: daysToAfford, completionDate });
+  }
+
+  if (!isClient) {
+    return null;
   }
 
   return (
