@@ -175,8 +175,8 @@ export default function WorthItCalculator() {
         <CardFooter>
           <div className="w-full text-center p-6 bg-primary/10 rounded-lg animate-in fade-in zoom-in-95 duration-500">
             <p className="text-lg">You need to work for</p>
-            <p className="text-5xl font-bold text-accent-foreground my-2">{result.days.toFixed(2)}</p>
-            <p className="text-lg">days to afford this product.</p>
+            <p className="text-5xl font-bold text-primary my-2">{result.days.toFixed(2)}</p>
+            <p className="text-lg"><span className="text-primary font-bold">days</span> to afford this product.</p>
             {result.completionDate && (
               <p className="text-sm text-muted-foreground mt-4">
                 If you start now, your estimated completion date is <span className="font-semibold">{format(result.completionDate, 'PPP')}</span>.
