@@ -93,7 +93,7 @@ export default function WorthItCalculator() {
                     <div className="relative w-full">
                        <Wallet className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                        <FormControl>
-                          <Input type="number" placeholder="e.g., 60000" {...field} className="pl-10" />
+                          <Input type="number" placeholder="60000" {...field} className="pl-10" />
                        </FormControl>
                     </div>
                      <Tabs value={salaryType} onValueChange={(value) => setSalaryType(value as "annual" | "monthly")} className="w-full pt-2">
@@ -115,7 +115,7 @@ export default function WorthItCalculator() {
                      <div className="relative">
                         <ShoppingCart className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                         <FormControl>
-                          <Input type="number" placeholder="e.g., 1200" {...field} className="pl-10" />
+                          <Input type="number" placeholder="1200" {...field} className="pl-10" />
                         </FormControl>
                     </div>
                     <FormMessage />
