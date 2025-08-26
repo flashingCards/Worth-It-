@@ -90,20 +90,18 @@ export default function WorthItCalculator() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Your Salary</FormLabel>
-                    <div className="flex items-center gap-2">
-                      <div className="relative w-full">
-                         <Wallet className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                         <FormControl>
-                            <Input type="number" placeholder="e.g., 60000" {...field} className="pl-10" />
-                         </FormControl>
-                      </div>
-                      <Tabs value={salaryType} onValueChange={(value) => setSalaryType(value as "annual" | "monthly")} className="w-auto">
-                        <TabsList>
-                          <TabsTrigger value="annual">Annual</TabsTrigger>
-                          <TabsTrigger value="monthly">Monthly</TabsTrigger>
-                        </TabsList>
-                      </Tabs>
+                    <div className="relative w-full">
+                       <Wallet className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                       <FormControl>
+                          <Input type="number" placeholder="e.g., 60000" {...field} className="pl-10" />
+                       </FormControl>
                     </div>
+                     <Tabs value={salaryType} onValueChange={(value) => setSalaryType(value as "annual" | "monthly")} className="w-full pt-2">
+                      <TabsList className="w-full">
+                        <TabsTrigger value="annual" className="w-full">Annual</TabsTrigger>
+                        <TabsTrigger value="monthly" className="w-full">Monthly</TabsTrigger>
+                      </TabsList>
+                    </Tabs>
                     <FormMessage />
                   </FormItem>
                 )}
